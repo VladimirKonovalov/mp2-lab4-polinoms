@@ -33,7 +33,7 @@ public:
 		if (pow < m.pow) return 1;
 		else return 0;
 	}
-	bool   operator==(const monom &m)
+	bool   operator==(const monom &m) const
 	{
 		if (pow == m.pow) return 1;
 		else return 0;

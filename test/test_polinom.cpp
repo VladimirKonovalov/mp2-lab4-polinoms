@@ -102,7 +102,7 @@ TEST(polinom, can_add_head)
 	_pol.add(1,1);
 //	_pol.writelist();
 	monom m(1,1);
-	EXPECT_EQ(_pol.getheaddata()==m,1);
+	EXPECT_EQ(_pol.getheaddata(),m);
 }
 
 TEST(polinom,can_add_more_monoms)
@@ -119,7 +119,7 @@ TEST(polinom,can_add_more_monoms)
 //	_pol.writelist();
 //	ASSERT_NO_THROW(_pol.add(2,2));
 	monom m(3,3);
-	EXPECT_EQ(_pol.getheaddata()==m,1);
+	EXPECT_EQ(_pol.getheaddata(),m);
 }
 
 TEST(polinom,can_simplify)
@@ -133,7 +133,7 @@ TEST(polinom,can_simplify)
 	_pol.simplify();
 //	_pol.writelist();
 	monom m(2,2);
-	EXPECT_EQ(_pol.getheaddata()==m,1);
+	EXPECT_EQ(_pol.getheaddata(),m);
 }
 
 TEST(polinom,can_expect)
@@ -147,7 +147,7 @@ TEST(polinom,can_expect)
 	_pol1 = _pol;
 	//_pol1.writelist();
 	monom m(2,2);
-	EXPECT_EQ(_pol1.getheaddata()==m,1);
+	EXPECT_EQ(_pol1.getheaddata(),m);
 }
 
 TEST(polinom,can_multiply_on_const)
@@ -160,7 +160,7 @@ TEST(polinom,can_multiply_on_const)
 	_pol1 = _pol * 2;
 //	_pol1.writelist();
 	monom m(2,2);
-	EXPECT_EQ(_pol1.getheaddata()==m,1);
+	EXPECT_EQ(_pol1.getheaddata(),m);
 }
 
 TEST(polinom,can_multiply_on_polinom)
@@ -173,7 +173,7 @@ TEST(polinom,can_multiply_on_polinom)
 	_pol1 = _pol * _pol;
 //	_pol1.writelist();
 	monom m(1,4);
-	EXPECT_EQ(_pol1.getheaddata()==m,1);
+	EXPECT_EQ(_pol1.getheaddata(),m);
 }
 
 TEST(polinom,can_addition_polinom)
@@ -186,7 +186,7 @@ TEST(polinom,can_addition_polinom)
 	_pol1 = _pol + _pol;
 	//_pol1.writelist();
 	monom m(2,2);
-	EXPECT_EQ(_pol1.getheaddata()==m,1);
+	EXPECT_EQ(_pol1.getheaddata(),m);
 }
 
 TEST(polinom,can_deduct_polinom)
@@ -202,7 +202,7 @@ TEST(polinom,can_deduct_polinom)
 	_pol2 = _pol1 - _pol;
 //	_pol2.writelist();
 	monom m(-1,1);
-	EXPECT_EQ(_pol2.getheaddata()==m,1);
+	EXPECT_EQ(_pol2.getheaddata(),m);
 }
 
 TEST(polinom,can_deduct_polinom_with_empty)
@@ -217,6 +217,5 @@ TEST(polinom,can_deduct_polinom_with_empty)
 //	_pol2.writelist();
 	monom m(1,2);
 //	cout << _pol2.getheaddata()<< " " << m << endl;
-	EXPECT_EQ(_pol2.getheaddata()==m,1);
-//	EXPECT_EQ(_pol2.getheaddata(),m);
+	EXPECT_EQ(_pol2.getheaddata(),m);
 }
