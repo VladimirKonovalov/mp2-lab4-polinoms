@@ -21,7 +21,7 @@ TEST(list, can_add_elem)
 	list<string> str;
 
 	str.add("A");
-	str.writelist();
+//	str.writelist();
 
 	ASSERT_NO_THROW(str.add("a"););
 }
@@ -43,7 +43,7 @@ TEST(list, can_add_sort_elem)
 	_list.add(3);
 	_list.add(6);
 	_list.add(5);
-	_list.writelist();
+//	_list.writelist();
 	EXPECT_EQ(_list.getheaddata(),6);
 }
 
@@ -52,7 +52,7 @@ TEST(list, can_del_first)
 	list<int> _list;
 	_list.add(1);
 	_list.delfirst();
-	_list.writelist();
+//	_list.writelist();
 	EXPECT_EQ(_list.getheaddata(),0);
 }
 
@@ -64,7 +64,7 @@ TEST(list, can_del_list)
 	_list.add(2);
 	_list.dellist();
 	_list.add(0);
-	_list.writelist();
+//	_list.writelist();
 	EXPECT_EQ(_list.getheaddata(),0);
 }
 
@@ -100,8 +100,9 @@ TEST(polinom, can_add_head)
 {
 	polinom _pol;
 	_pol.add(1,1);
-	_pol.writelist();
-	ASSERT_NO_THROW(_pol.add(2,2));
+//	_pol.writelist();
+	monom m(1,1);
+	EXPECT_EQ(_pol.getheaddata()==m,1);
 }
 
 TEST(polinom,can_add_more_monoms)
@@ -115,8 +116,10 @@ TEST(polinom,can_add_more_monoms)
 	_pol.add(1,2);
 	_pol.add(1,3);
 
-	_pol.writelist();
-	ASSERT_NO_THROW(_pol.add(2,2));
+//	_pol.writelist();
+//	ASSERT_NO_THROW(_pol.add(2,2));
+	monom m(3,3);
+	EXPECT_EQ(_pol.getheaddata()==m,1);
 }
 
 TEST(polinom,can_simplify)
@@ -128,7 +131,9 @@ TEST(polinom,can_simplify)
 	_pol.add(1,2);
 	_pol.add(0,3);
 	_pol.simplify();
-	_pol.writelist();
+//	_pol.writelist();
+	monom m(2,2);
+	EXPECT_EQ(_pol.getheaddata()==m,1);
 }
 
 TEST(polinom,can_expect)
@@ -140,7 +145,9 @@ TEST(polinom,can_expect)
 	_pol.add(1,2);
 	polinom _pol1;
 	_pol1 = _pol;
-	_pol1.writelist();
+	//_pol1.writelist();
+	monom m(2,2);
+	EXPECT_EQ(_pol1.getheaddata()==m,1);
 }
 
 TEST(polinom,can_multiply_on_const)
@@ -151,7 +158,9 @@ TEST(polinom,can_multiply_on_const)
 	_pol.add(1,1);
 	polinom _pol1;
 	_pol1 = _pol * 2;
-	_pol1.writelist();
+//	_pol1.writelist();
+	monom m(2,2);
+	EXPECT_EQ(_pol1.getheaddata()==m,1);
 }
 
 TEST(polinom,can_multiply_on_polinom)
@@ -162,7 +171,9 @@ TEST(polinom,can_multiply_on_polinom)
 	_pol.add(1,1);
 	polinom _pol1;
 	_pol1 = _pol * _pol;
-	_pol1.writelist();
+//	_pol1.writelist();
+	monom m(1,4);
+	EXPECT_EQ(_pol1.getheaddata()==m,1);
 }
 
 TEST(polinom,can_addition_polinom)
@@ -173,7 +184,9 @@ TEST(polinom,can_addition_polinom)
 	_pol.add(1,1);
 	polinom _pol1;
 	_pol1 = _pol + _pol;
-	_pol1.writelist();
+	//_pol1.writelist();
+	monom m(2,2);
+	EXPECT_EQ(_pol1.getheaddata()==m,1);
 }
 
 TEST(polinom,can_deduct_polinom)
@@ -187,5 +200,23 @@ TEST(polinom,can_deduct_polinom)
 	_pol1.add(1,1);
 	polinom _pol2;
 	_pol2 = _pol1 - _pol;
-	_pol2.writelist();
+//	_pol2.writelist();
+	monom m(-1,1);
+	EXPECT_EQ(_pol2.getheaddata()==m,1);
+}
+
+TEST(polinom,can_deduct_polinom_with_empty)
+{
+	polinom _pol;
+	_pol.add(1,1);
+	_pol.add(1,2);
+	_pol.add(1,1);
+	polinom _pol1;
+	polinom _pol2;
+	_pol2 = _pol1 + _pol;
+//	_pol2.writelist();
+	monom m(1,2);
+//	cout << _pol2.getheaddata()<< " " << m << endl;
+	EXPECT_EQ(_pol2.getheaddata()==m,1);
+//	EXPECT_EQ(_pol2.getheaddata(),m);
 }
